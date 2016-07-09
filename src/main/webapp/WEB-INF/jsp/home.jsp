@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home Page</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/css/jumbotron-narrow.css">
     <link rel="stylesheet" type="text/css" href="/css/home.css">
     <link rel="stylesheet" type="text/css" href="/css/jquery.growl.css"/>
     <script src="http://code.jquery.com/jquery.js"></script>
@@ -65,7 +64,6 @@
     $("#logout").click(function(e) {
         e.preventDefault();
         $("#home").removeClass("active");
-        $("#password-login").removeClass("active");
         $("#logout").addClass("active");
         // assumes we are not part of SSO so just logout of local session
         window.location = "${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}/logout";
