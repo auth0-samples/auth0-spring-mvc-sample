@@ -22,18 +22,20 @@
             }
         });
         $(function () {
-            var lock = new Auth0Lock('${clientId}', '${domain}');
-            lock.showSignin({
-                authParams: {
-                    state: '${state}',
-                    // change scopes to whatever you like
-                    // claims are added to JWT id_token - openid profile gives everything
-                    scope: 'openid user_id name nickname email picture'
-                },
-                responseType: 'code',
-                popup: false,
-                callbackURL: '${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}${loginCallback}'
+            var lock = new Auth0Lock('${clientId}', '${domain}', {
+                auth: {
+                    redirectUrl: '${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}${loginCallback}',
+                    responseType: 'code',
+                    params: {
+                        state: '${state}',
+                        // Learn about scopes: https://auth0.com/docs/scopes
+                        scope: 'openid user_id name nickname email picture'
+                    }
+                }
             });
+            setTimeout(function () {
+                lock.show();
+            }, 1500);
         });
     </script>
 </div>
