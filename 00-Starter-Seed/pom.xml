@@ -53,16 +53,10 @@
 
         <!-- third party -->
 
-         <dependency>
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
-          </dependency>
-
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>3.2.0</version>
         </dependency>
 
         <dependency>
@@ -82,7 +76,7 @@
         <dependency>
             <groupId>com.auth0</groupId>
             <artifactId>auth0-spring-mvc</artifactId>
-            <version>0.1.0</version>
+            <version>0.2.0</version>
         </dependency>
 
         <!-- test -->

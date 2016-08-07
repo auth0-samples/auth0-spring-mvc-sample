@@ -33,6 +33,7 @@
                     }
                 }
             });
+            // delay to allow welcome message..
             setTimeout(function () {
                 lock.show();
             }, 1500);
