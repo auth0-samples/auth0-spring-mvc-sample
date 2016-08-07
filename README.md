@@ -98,6 +98,52 @@ Then, go to [http://localhost:3099/login](http://localhost:3099/login).
 
 ![](img/2.home.jpg)
 
+### Using Docker with this sample
+
+The `01-Login` step comes with a [docker maven plugin](https://github.com/spotify/docker-maven-plugin) configured to
+run this sample as an executable `war` file.
+
+Install [Docker](https://docs.docker.com/engine/installation/) on your local machine.
+
+From the Auth0 Dashboard, update your allowed callbacks URL, using the IP address of your docker machine
+(use `docker-machine ip`). For example,
+
+```
+http://192.168.99.100:3099/callback
+```
+Run:
+
+```
+mvn clean package docker:build
+```
+
+Now, when you issue `docker images`, you should see a fresh image called `auth0/auth0-spring-mvc-sample`
+
+Next, run:
+
+```
+docker run -it -p 3099:3099 auth0/auth0-spring-mvc-sample
+```
+
+This runs docker in interactive terminal mode, pointing the port `3099` on your local machine to port `3099` inside
+the docker container. All going well, you should see the usual output on the terminal, similar to running locally,
+however start up time may be significantly longer.
+
+Next, in your web browser, go to:
+
+```
+http://192.168.99.100:3099/login
+```
+
+If you want to take a look inside the container, run `docker ps -a`, not the container id of this sample, and then run:
+
+```
+docker exec -t -i <container id> /bin/bash
+```
+
+It is that simple to have this sample running in a docker container!
+
+### Actuator
 
 Finally, in addition, using Spring Boot `actuator` we can easily verify various health and performance statistics for our running application.
 
