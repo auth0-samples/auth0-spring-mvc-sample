@@ -1,7 +1,6 @@
 package com.auth0.example;
 
-import com.auth0.web.Auth0Config;
-import com.auth0.web.Auth0User;
+import com.auth0.Auth0User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +16,11 @@ public class HomeController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private Auth0Config auth0Config;
+    private AppConfig appConfig;
 
     @Autowired
-    public HomeController(Auth0Config auth0Config) {
-        this.auth0Config = auth0Config;
+    public HomeController(AppConfig appConfig) {
+        this.appConfig = appConfig;
     }
 
     @RequestMapping(value="/portal/home", method = RequestMethod.GET)
