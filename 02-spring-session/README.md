@@ -10,12 +10,12 @@ In order to run this example you will need to have Java 7+, Maven, and Redis Ser
 
 Check that your redis server is installed correctly:
 
-```
+```sh
 redis-cli
 ```
 
-There is a Dockerfile provided with this sample, so you can simply run Redis in a container to keep things simple if you prefer (rather than have to install on you host OS)
-
+If you are interested in running Redis in a Docker container instead of installing locally (and have Docker installed) then
+simply run `dockerRedisOnly.sh`. If you are not using Docker, no problems just install locally instead.
 
 Check that your maven version is 3.0.x or above:
 
@@ -41,16 +41,16 @@ Documentation: [Login](https://auth0.com/docs/quickstart/webapp/java-spring-mvc/
 We just have to add the following maven (pom.xml) dependencies;
 
 ```
-    <dependency>
-        <groupId>org.springframework.session</groupId>
-        <artifactId>spring-session</artifactId>
-        <version>1.2.1.RELEASE</version>
-    </dependency>
+<dependency>
+    <groupId>org.springframework.session</groupId>
+    <artifactId>spring-session</artifactId>
+    <version>1.2.1.RELEASE</version>
+</dependency>
 
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-redis</artifactId>
-    </dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-redis</artifactId>
+</dependency>
 ```
 
 And we add an extra configuration class:
@@ -66,6 +66,18 @@ public class HttpSessionConfig {
 }
 ```
 
+Finally, we need to update our `src/main/resources/application.properties` with the redis specific properties to connect:
+
+```
+spring.redis.host=localhost
+# spring.redis.password=
+spring.redis.port=6379
+```
+
+All done!
+
+### Inspecting Redis
+
 Now, session state will be stored in `Redis`. 
 
 You can see this using `redis-cli` and inspecting the various keys, in particular the hash entry.
@@ -74,3 +86,18 @@ You can see this using `redis-cli` and inspecting the various keys, in particula
 > type key  # hash
 > hvals key  # corresponding to hash
 ```
+
+Check out the Redis commands available [here](http://redis.io/commands)
+
+
+### Full Docker Container Support
+
+If you are interested in using Docker, and running both the sample and Redis server inside containers that network with one another then:
+
+Update `src/main/resources/application.properties` changing `spring.redis.host=localhost` to `spring.redis.host=redis-server`
+
+Next, run:
+
+`docker-compose build` followed by `docker-compose up` and then once completed go to go to [http://localhost:3099/login](http://localhost:3099/login).
+
+Everything will run exactly as before, but the auth0 sample and the redis server are running in separate containers.

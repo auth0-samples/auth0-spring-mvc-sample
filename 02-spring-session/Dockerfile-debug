@@ -1,3 +1,0 @@
-FROM auth0/auth0-spring-mvc-sample
-# CMD /usr/share/maven/bin/mvnDebug exec:java
-ENTRYPOINT ["/usr/share/maven/bin/mvnDebug", "exec:java"]
