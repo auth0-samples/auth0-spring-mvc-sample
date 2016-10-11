@@ -4,7 +4,7 @@ This is a simple Java Spring MVC web application that is meant to be used as the
 
 However, this sample builds on the Login Example by illustrating how to easily integrate with [Spring Session](http://projects.spring.io/spring-session/)
 
-Since this sample is a Spring Boot application, it follows the []Spring Session for Spring Boot instructions](http://docs.spring.io/spring-session/docs/current/reference/html5/guides/boot.html#boot-sample)
+Since this sample is a Spring Boot application, it follows the [Spring Session for Spring Boot instructions](http://docs.spring.io/spring-session/docs/current/reference/html5/guides/boot.html#boot-sample)
 
 In order to run this example you will need to have Java 7+, Maven, and Redis Server installed.
 
