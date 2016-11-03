@@ -11,4 +11,3 @@ auth0.loginRedirectOnFail: /login
 auth0.signingAlgorithm: HS256
 #auth0.signingAlgorithm: RS256
 #auth0.publicKeyPath: /WEB-INF/certificate/cert.pem
-
