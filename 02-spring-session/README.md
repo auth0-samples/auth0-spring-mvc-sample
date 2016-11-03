@@ -6,6 +6,8 @@ However, this sample builds on the Login Example by illustrating how to easily i
 
 Since this sample is a Spring Boot application, it follows the [Spring Session for Spring Boot instructions](http://docs.spring.io/spring-session/docs/current/reference/html5/guides/boot.html#boot-sample)
 
+Start by renaming the `auth0.properties.example` file in `src/main/resources` to `auth0.properties` and provide your application's domain, issuer, clientID, and client secret.
+
 In order to run this example you will need to have Java 7+, Maven, and Redis Server installed.
 
 Check that your redis server is installed correctly:
