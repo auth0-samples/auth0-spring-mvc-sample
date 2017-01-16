@@ -1,9 +1,8 @@
 package com.auth0.example;
 
+import com.auth0.NonceUtils;
+import com.auth0.SessionUtils;
 import com.auth0.web.Auth0Config;
-import com.auth0.web.NonceFactory;
-import com.auth0.web.NonceUtils;
-import com.auth0.web.SessionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
