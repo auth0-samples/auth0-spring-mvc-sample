@@ -6,7 +6,7 @@
 This sample demonstrates how to use Auth0 to perform authentication using the `mvc-auth-commons` library. Download or clone this repository and follow the instructions below to setup the sample.
 
 ### Auth0 Dashboard
-1. On the [Auth0 Dashboard](https://manage.auth0.com/#/clients) create a new Client of type `Regular Web Application`. 
+1. On the [Auth0 Dashboard](https://manage.auth0.com/#/clients) create a new Client of type `Regular Web Application`.
 1. Add the URL that will be called on an OAuth successful login to the Allowed Callback URLs. i.e.: `https://mysite.com/callback`.
 1. Add the URL that will be called on logout to the Allowed Logout URLs. i.e.: `https://mysite.com/logout`.
 1. Copy the `Domain`, `Client ID` and `Client Secret` values at the top of the page and use them to configure the Java Application.
@@ -30,7 +30,7 @@ AuthenticationController.newBuilder(domain, clientId, clientSecret)
 ```
 
 Keep in mind that the server uses `POST` to return an Implicit Grant result, you should handle that on your controller too.
- 
+
 
 ### Running the sample
 
@@ -41,6 +41,25 @@ Open a terminal, go to the project root directory and run the following command:
 ```
 
 The server will be accessible on https://localhost:8080/portal/home. After logging in you should see the `token` in the header.
+
+### Using Docker with the sample
+
+This sample can optionally be run on a computer with [Docker](https://www.docker.com) installed. To do so, we include a `docker_run.sh` file at the root that will build the image defined in the _Dockerfile_ and then run it in a container. The file must be called passing the Auth0 Client Properties or the execution will fail.
+
+The syntax is:
+
+```
+./run.sh {DOMAIN} {CLIENT_ID} {CLIENT_SECRET}
+```
+
+i.e.:
+
+```sh
+./run.sh myusername.auth0.com sdn0oWeJpj1293Yq82WUtjSDahO AShdOSDa__sndUsU29AsJsIO20ASlsdoashOSnDIaSO_
+```
+
+You'll find the WebApp running in https://localhost:8080.
+
 
 
 ## Issue Reporting

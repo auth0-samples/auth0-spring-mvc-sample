@@ -1,0 +1,18 @@
+# Temporary files
+out/
+build/
+
+# Gradle
+.gradle/
+
+# Repository 
+.git
+.gitignore
+LICENCE
+LICENSE
+README.md
+Changelog.md
+
+# IDE files
+.idea/
+*.iml
