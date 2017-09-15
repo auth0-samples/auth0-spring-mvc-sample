@@ -8,7 +8,7 @@ if [ "$#" -le "2" ]; then
   exit
 fi
 
-DOCKER_IMAGE_NAME=a0-sample-spring-mvc-login00
+DOCKER_IMAGE_NAME=auth0-samples/spring-mvc-00login:latest
 DOMAIN=$1
 CLIENT_ID=$2
 CLIENT_SECRET=$3
@@ -17,4 +17,4 @@ docker build -t $DOCKER_IMAGE_NAME . --build-arg DOMAIN=$DOMAIN --build-arg CLIE
 echo "============ Docker Image Created: '$DOCKER_IMAGE_NAME' ============"
 echo "===================================================================="
 echo ""
-docker run -p 8080:8080 $DOCKER_IMAGE_NAME
+docker run --rm -p 8080:8080 $DOCKER_IMAGE_NAME

@@ -12,4 +12,5 @@ buildNumber.properties
 auth0-spring-mvc-sample.iml
 .idea
 
+**/*.DS_Store
 
