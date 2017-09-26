@@ -44,22 +44,13 @@ The server will be accessible on https://localhost:8080/portal/home. After loggi
 
 ### Using Docker with the sample
 
-This sample can optionally be run on a computer with [Docker](https://www.docker.com) installed. To do so, we include a `docker_run.sh` file at the root that will build the image defined in the _Dockerfile_ and then run it in a container. The file must be called passing the Auth0 Client Properties or the execution will fail.
+This sample can optionally be run on a computer with [Docker](https://www.docker.com) installed. To do so, we include a `docker_run.sh` file at the root that will build the image defined in the _Dockerfile_ and then run it in a container.
 
-The syntax is:
-
-```
-./run.sh {DOMAIN} {CLIENT_ID} {CLIENT_SECRET}
-```
-
-i.e.:
-
-```sh
-./run.sh myusername.auth0.com sdn0oWeJpj1293Yq82WUtjSDahO AShdOSDa__sndUsU29AsJsIO20ASlsdoashOSnDIaSO_
+```bash
+$ ./docker_run.sh
 ```
 
 You'll find the WebApp running in https://localhost:8080.
-
 
 
 ## Issue Reporting
