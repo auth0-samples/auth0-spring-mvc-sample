@@ -40,8 +40,15 @@ Open a terminal, go to the project root directory and run the following command:
 ./gradlew clean bootRun
 ```
 
-The server will be accessible on https://localhost:8080/portal/home. After logging in you should see the `token` in the header.
+The server will be accessible on https://localhost:3000/portal/home. After logging in you should see the `token` in the header.
 
+### Running the sample with docker
+
+In order to run the example with docker you need to have `docker` installed. Check out [docker documentation](https://docs.docker.com/engine/installation/) for installation guide.
+
+You also need to set the client values as explained [previously](#java-application).
+
+Execute in command line `sh exec.sh` to run the Docker in Linux or MacOS, or `.\exec.ps1` to run the Docker in Windows.
 
 ## Issue Reporting
 
@@ -71,6 +78,6 @@ If you have found a bug or if you have a feature request, please report them at 
 
 [Auth0](https://auth0.com)
 
-## License
+## Licence
 
-This project is licensed under the MIT license. See the [LICENSE](LICENSE.txt) file for more info.
+This project is licensed under the MIT license. See the [LICENCE](LICENCE.txt) file for more info.
