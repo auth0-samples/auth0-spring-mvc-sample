@@ -40,7 +40,11 @@ Open a terminal, go to the project root directory and run the following command:
 ./gradlew clean bootRun
 ```
 
-If you are using a Windows environment, execute `gradlew clean appRun`
+If you are using a Windows environment, execute:
+
+```bash
+gradlew clean bootRun
+```
 
 The server will be accessible on https://localhost:3000/portal/home. After logging in you should see the `token` in the header.
 
