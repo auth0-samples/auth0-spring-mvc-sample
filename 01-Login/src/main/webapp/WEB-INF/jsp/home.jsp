@@ -59,11 +59,11 @@
     $(function () {
         $.growl({title: "Welcome  ${userId}", message: "We hope you enjoy using this site!"});
     });
-    $("qsLogoutBtn").click(function(e) {
+    $("#qsLogoutBtn").click(function(e) {
         e.preventDefault();
         $("#home").removeClass("active");
         $("#password-login").removeClass("active");
-        $("qsLogoutBtn").addClass("active");
+        $("#qsLogoutBtn").addClass("active");
         // assumes we are not part of SSO so just logout of local session
         window.location = "${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}/logout";
     });
