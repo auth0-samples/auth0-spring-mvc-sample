@@ -11,5 +11,6 @@ buildNumber.properties
 .mvn/timing.properties
 auth0-spring-mvc-sample.iml
 .idea
+auth0.properties
 
 
