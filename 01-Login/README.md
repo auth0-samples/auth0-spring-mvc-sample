@@ -28,15 +28,18 @@ com.auth0.clientId: {YOUR_AUTH0_CLIENT_ID}
 com.auth0.clientSecret: {YOUR_AUTH0_CLIENT_SECRET}
 ```
 
-It will request by default a `code` Response Type and later execute a Code Exchange. You can modify this behavior by changing the Response Type in the `AuthController` class to `token` or `id_token` to use Implicit Grant. i.e.:
+By default, `mvc-auth-commons` uses the Authorization Code flow and assumes tokens are signed with the HS256 signing algorithm.
+
+If using RS256 (recommended, and the default for new applications), you need to configure the `AuthenticationController` with a `JwkProvider` to fetch the public signing key used to verify the ID token:
 
 ```java
+JwkProvider jwkProvider = new JwkProviderBuilder(domain).build();
 AuthenticationController.newBuilder(domain, clientId, clientSecret)
-    .withResponseType("token")
+    .withJwkProvider(jwkProvider)
     .build();
 ```
 
-Keep in mind that the server uses `POST` to return an Implicit Grant result, you should handle that on your controller too.
+See the [mvc-auth-commons](https://github.com/auth0/auth0-java-mvc-common) repository for additional configuration options.
  
 
 ### Running the sample
