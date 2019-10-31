@@ -3,14 +3,18 @@
 
 ## Getting started
 
-This sample demonstrates how to use Auth0 to perform authentication using the `mvc-auth-commons` library. Download or clone this repository and follow the instructions below to setup the sample.
+This sample demonstrates how to use Auth0 to perform authentication using the Auth0 Java MVC Commons library. Download or clone this repository and follow the instructions below to configure and run the application.
+
+To learn more about the Auth0 Java MVC Commons library, refer to the project's [documentation](https://github.com/auth0/auth0-java-mvc-common/blob/master/README.md).
 
 ### Auth0 Dashboard
-1. On the [Auth0 Dashboard](https://manage.auth0.com/#/clients) create a new Application of type `Regular Web Application`. 
-1. Add the URL that will be called on an OAuth successful login to the Allowed Callback URLs. i.e.: `http://localhost:3000/callback`.
-1. Add the URL that will be called on logout to the Allowed Logout URLs. i.e.: `http://localhost:3000`.
-1. Copy the `Domain`, `Client ID` and `Client Secret` values at the top of the page and use them to configure the Java Application.
 
+1. On the [Auth0 Dashboard](https://manage.auth0.com/#/clients), click **CREATE APPLICATION**, provide a name for your Application, select **Regular Web Application**, and click **Create**
+1. Go to the **Settings** tab of your Application
+1. Add the URL `http://localhost:3000/callback` to the **Allowed Callback URLs** field
+1. Add the URL `http://localhost:3000` to the **Allowed Logout URLs** field
+1. Click **SAVE CHANGES**
+1. The `Domain`, `Client ID`, and `Client Secret` values will be used next to configure the Java application
 
 ### Java Application
 
@@ -20,24 +24,13 @@ Copy `src/main/resources/auth0.properties.example` to `src/main/resources/auth0.
 cp src/main/resources/auth0.properties.example src/main/resources/auth0.properties
 ```
 
-Set the client values in the `src/main/resources/auth0.properties` file. They are read by the `AppConfig` class.
+Set the client values in the `src/main/resources/auth0.properties` file:
 
 ```xml
 com.auth0.domain: {YOUR_AUTH0_DOMAIN}
 com.auth0.clientId: {YOUR_AUTH0_CLIENT_ID}
 com.auth0.clientSecret: {YOUR_AUTH0_CLIENT_SECRET}
 ```
-
-It will request by default a `code` Response Type and later execute a Code Exchange. You can modify this behavior by changing the Response Type in the `AuthController` class to `token` or `id_token` to use Implicit Grant. i.e.:
-
-```java
-AuthenticationController.newBuilder(domain, clientId, clientSecret)
-    .withResponseType("token")
-    .build();
-```
-
-Keep in mind that the server uses `POST` to return an Implicit Grant result, you should handle that on your controller too.
- 
 
 ### Running the sample
 
