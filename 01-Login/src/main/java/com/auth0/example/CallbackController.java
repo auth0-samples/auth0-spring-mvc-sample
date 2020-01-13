@@ -29,24 +29,24 @@ public class CallbackController {
     }
 
     @RequestMapping(value = "/callback", method = RequestMethod.GET)
-    protected void getCallback(final HttpServletRequest req, final HttpServletResponse res) throws ServletException, IOException {
-        handle(req, res);
+    protected void getCallback(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
+        handle(request, response);
     }
 
     @RequestMapping(value = "/callback", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    protected void postCallback(final HttpServletRequest req, final HttpServletResponse res) throws ServletException, IOException {
-        handle(req, res);
+    protected void postCallback(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
+        handle(request, response);
     }
 
-    private void handle(HttpServletRequest req, HttpServletResponse res) throws IOException {
+    private void handle(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            Tokens tokens = controller.handle(req);
-            SessionUtils.set(req, "accessToken", tokens.getAccessToken());
-            SessionUtils.set(req, "idToken", tokens.getIdToken());
-            res.sendRedirect(redirectOnSuccess);
+            Tokens tokens = controller.handle(request, response);
+            SessionUtils.set(request, "accessToken", tokens.getAccessToken());
+            SessionUtils.set(request, "idToken", tokens.getIdToken());
+            response.sendRedirect(redirectOnSuccess);
         } catch (IdentityVerificationException e) {
             e.printStackTrace();
-            res.sendRedirect(redirectOnFail);
+            response.sendRedirect(redirectOnFail);
         }
     }
 

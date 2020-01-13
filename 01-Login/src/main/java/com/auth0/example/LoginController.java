@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("unused")
 @Controller
@@ -18,10 +19,10 @@ public class LoginController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    protected String login(final HttpServletRequest req) {
+    protected String login(HttpServletRequest request, HttpServletResponse response) {
         logger.debug("Performing login");
-        String redirectUri = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + "/callback";
-        String authorizeUrl = controller.buildAuthorizeUrl(req, redirectUri);
+        String redirectUri = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/callback";
+        String authorizeUrl = controller.buildAuthorizeUrl(request, response, redirectUri);
         return "redirect:" + authorizeUrl;
     }
 
