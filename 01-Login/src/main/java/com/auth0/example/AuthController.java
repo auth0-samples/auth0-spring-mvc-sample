@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Component
 public class AuthController {
@@ -24,13 +25,13 @@ public class AuthController {
                 .build();
     }
 
-    Tokens handle(HttpServletRequest request) throws IdentityVerificationException {
-        return controller.handle(request);
+    Tokens handle(HttpServletRequest request, HttpServletResponse response) throws IdentityVerificationException {
+        return controller.handle(request, response);
     }
 
-    String buildAuthorizeUrl(HttpServletRequest request, String redirectUri) {
+    String buildAuthorizeUrl(HttpServletRequest request, HttpServletResponse response, String redirectUri) {
         return controller
-                .buildAuthorizeUrl(request, redirectUri)
+                .buildAuthorizeUrl(request, response, redirectUri)
                 .build();
     }
 
